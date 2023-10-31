@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.rahul.electronic.store.entity.Category;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +20,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 public class ProductDto {
 
 	
@@ -32,6 +33,16 @@ public class ProductDto {
 	private Date addedDate;
 	private boolean live;
 	private boolean stock;
+	
+	private String productImageName;
+	private CategoryDto category;
+	@Override
+	public String toString() {
+		return "ProductDto [productId=" + productId + ", title=" + title + ", description=" + description + ", price="
+				+ price + ", discountedPrice=" + discountedPrice + ", quantatity=" + quantatity + ", addedDate="
+				+ addedDate + ", live=" + live + ", stock=" + stock + ", productImageName=" + productImageName
+				+ ", categoryDto=" + category + "]";
+	}
 	
 	
 	

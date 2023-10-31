@@ -22,5 +22,14 @@ public class CategoryDto {
 	@NotBlank
 	private String description;
 	private String coverImage;
+	@Override
+	public String toString() {
+		return "CategoryDto [categoryId=" + categoryId + ", title=" + title + ", description=" + description
+				+ ", coverImage=" + coverImage + "]";
+	}
 
+	
+	
+	
+	
 }
