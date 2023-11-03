@@ -75,8 +75,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void delete(String productId) {
-		Product product = productRepo.findById(productId)
-				.orElseThrow(() -> new ResourceNotFoundException("Given Product not avaliable"));
+		Product product = productRepo.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Given Product not avaliable"));
+				
 		String fullpath = imagePath + product.getProductImageName();
 		try {
 			Path path = Paths.get(fullpath);

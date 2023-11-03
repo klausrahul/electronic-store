@@ -102,8 +102,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public CategoryDto getById(String categoryId) {
-		Category category = categoryRepo.findById(categoryId)
-				.orElseThrow(() -> new ResourceNotFoundException("Given Category not avaliable"));
+		Category category = categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Given Category not avaliable"));
+				
 		return mapper.map(category, CategoryDto.class);
 	}
 

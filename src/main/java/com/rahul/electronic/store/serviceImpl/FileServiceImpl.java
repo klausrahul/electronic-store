@@ -15,7 +15,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rahul.electronic.store.exception.BadApiRequest;
+import com.rahul.electronic.store.exception.BadApiRequestException;
 import com.rahul.electronic.store.service.FileService;
 @Service
 public class FileServiceImpl implements FileService {
@@ -43,7 +43,7 @@ public class FileServiceImpl implements FileService {
 			Files.copy(file.getInputStream(), Paths.get(fullpathWithFileName));
 			return filenameWithExtension;
 		} else {
-			throw new BadApiRequest("File With this" + extension + " Not allowed");
+			throw new BadApiRequestException("File With this" + extension + " Not allowed");
 
 		}
 	}
