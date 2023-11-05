@@ -24,8 +24,11 @@ import com.rahul.electronic.store.exception.BadApiRequestException;
 import com.rahul.electronic.store.security.JWTHelper;
 import com.rahul.electronic.store.service.UserService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/auth")
+@Api(value = "AuthController",description = "This is AUTH Related APIS")
 public class AuthController {
 
 	@Autowired

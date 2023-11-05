@@ -82,6 +82,15 @@
 			<scope>runtime</scope>
 		</dependency>
 
+
+			
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter  for swagger UI it is implementation of swafg-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

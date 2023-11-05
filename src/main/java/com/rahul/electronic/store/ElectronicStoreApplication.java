@@ -12,6 +12,7 @@ import com.rahul.electronic.store.entity.Role;
 import com.rahul.electronic.store.repo.RoleRepo;
 
 @SpringBootApplication
+@EnableWebMvc
 public class ElectronicStoreApplication implements CommandLineRunner {
 
 	@Autowired

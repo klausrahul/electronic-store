@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 
 import com.rahul.electronic.store.entity.Role;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class UserDto {
 	
 	private String userId;
 	@Size(min=3,max=20,message = "Invalid name !!")
+	@ApiModelProperty(value = "user_name",name = "UserName",required = true,notes = "User Name of new user!!")
 	private String name;
 	
 	@Email(message = "Invalid User Email")

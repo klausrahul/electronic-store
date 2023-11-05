@@ -36,8 +36,14 @@ import com.rahul.electronic.store.dto.UserDto;
 import com.rahul.electronic.store.service.FileService;
 import com.rahul.electronic.store.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/user")
+@Api(value = "UserController",description = "This is User Related APIS")
 public class UserController {
 	
 	private Logger log=LoggerFactory.getLogger(UserController.class);
@@ -52,6 +58,12 @@ public class UserController {
 	private String imageUploadPath;
 
 	@PostMapping("/create")
+	@ApiOperation(value = "Create User!!!!!!",tags = {"user-controller"})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200,message = "SUCCESS | OK"),
+			@ApiResponse(code = 401,message = "Not Auhtorized"),
+			@ApiResponse(code = 201,message = "New Uesr Created !!")
+	})
 	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto request) {
 		UserDto user = service.createUser(request);
 		return new ResponseEntity<UserDto>(user, HttpStatus.CREATED);
@@ -73,6 +85,11 @@ public class UserController {
 
 	
 	@GetMapping("/getall")
+	@ApiOperation(value = "get All Users",response = ResponseEntity.class,tags = {"user-controller","user-api"})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200,message = "SUCCESS | OK"),
+			@ApiResponse(code = 401,message = "Not Auhtorizes")
+	})
 	public ResponseEntity<PageableResponse<UserDto>> getAllUser(
 			@RequestParam(value = "pageNumber", required = false, defaultValue = "0") int pageNumber,
 
