@@ -23,9 +23,11 @@ import org.springframework.stereotype.Service;
 
 import com.rahul.electronic.store.dto.PageableResponse;
 import com.rahul.electronic.store.dto.UserDto;
+import com.rahul.electronic.store.entity.Role;
 import com.rahul.electronic.store.entity.User;
 import com.rahul.electronic.store.exception.ResourceNotFoundException;
 import com.rahul.electronic.store.helper.Helper;
+import com.rahul.electronic.store.repo.RoleRepo;
 import com.rahul.electronic.store.repo.UserRepo;
 import com.rahul.electronic.store.service.UserService;
 
@@ -41,6 +43,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	PasswordEncoder encoder;
+	
+	@Value("${normal.role.id}")
+	private String normalRoleId;
+	
+	@Autowired
+	private RoleRepo roleRepo;
 
 	@Override
 	public UserDto createUser(UserDto userDto) {
@@ -49,7 +57,12 @@ public class UserServiceImpl implements UserService {
 		userDto.setUserId(id);
 		userDto.setPassword(encoder.encode(userDto.getPassword()));
 		log.info("Get Encoded Password:: {}", userDto.getPassword());
-		User userResult = repo.save(dtoToEntity(userDto));
+		User user=dtoToEntity(userDto);
+		//Fetch role basis on role id and set it to USer table
+		Role role=roleRepo.findById(normalRoleId).orElseThrow(() -> new ResourceNotFoundException("Role not found for given id !!"));
+		
+		user.getRoles().add(role);
+		User userResult = repo.save(user);
 
 		return entityToDto(userResult);
 	}

@@ -1,9 +1,14 @@
 package com.rahul.electronic.store.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.rahul.electronic.store.entity.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,4 +39,5 @@ public class UserDto {
 	private String about;
 	
 	private String imageName;
+	private Set<RoleDto> roles=new HashSet<>();
 }
