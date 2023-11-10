@@ -135,6 +135,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDto createProductWithCategory(String categoryId, ProductDto productDto) {
 		log.info("createProductWithCategory is===");
 		Category category=categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category Not Found For Given ID !!"));
+		System.err.println("category is==="+category.getTitle());
 		log.info("category is==="+category);
 		Product product = mapper.map(productDto, Product.class);
 		String uuid = UUID.randomUUID().toString();

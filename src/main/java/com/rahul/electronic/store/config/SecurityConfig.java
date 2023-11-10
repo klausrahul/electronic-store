@@ -67,7 +67,7 @@ public class SecurityConfig {
 		http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/auth/login").permitAll()
 				.antMatchers(HttpMethod.POST, "/user/create").permitAll().
 				antMatchers(HttpMethod.DELETE,"/user/**").hasRole("ADMIN").
-				antMatchers(PUBLIC_URLS).permitAll().
+				antMatchers(PUBLIC_URLS).permitAll().antMatchers(HttpMethod.GET).permitAll().
 
 				anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()

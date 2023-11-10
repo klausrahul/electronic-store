@@ -81,7 +81,6 @@ public class UserServiceImpl implements UserService {
 		// save user
 
 		User upadatedDto = repo.save(user);
-
 		return entityToDto(upadatedDto);
 	}
 
